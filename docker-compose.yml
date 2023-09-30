@@ -1,0 +1,14 @@
+services:
+  protonmail-bridge:
+    build: .
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - 1143:143/tcp
+      - 1025:25/tcp
+    volumes:
+      - protonmail:/root
+volumes:
+  protonmail:
+    name: protonmail
