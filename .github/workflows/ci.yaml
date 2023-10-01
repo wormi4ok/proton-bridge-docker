@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+env:
+  DOCKER_REPO: wormi4ok/protonmail-bridge
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.0
+
+      - name: Set version
+        id: version
+        run: echo "version=`cat VERSION`" >> $GITHUB_OUTPUT
+
+      - name: Publish Docker image to GitHub Container Registry
+        uses: elgohr/Publish-Docker-Github-Action@v5
+        with:
+          registry: ghcr.io
+          name: ${{ env.DOCKER_REPO }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN }}
+          tags: "latest,${{ steps.version.outputs.version }}"
+          default_branch: main

@@ -1,6 +1,6 @@
 services:
   protonmail-bridge:
-    build: .
+    image: ghcr.io/wormi4ok/protonmail-bridge:latest
     restart: unless-stopped
     stdin_open: true
     tty: true
