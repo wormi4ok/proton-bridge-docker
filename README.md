@@ -33,3 +33,12 @@ openssl s_client -showcerts \
   -starttls imap </dev/null 2>/dev/null |
    openssl x509 -outform PEM > cert.pem
 ```
+
+Example command to generate a self-signed certificate
+
+```bash
+openssl req -new -newkey rsa:4096 \
+ -days 3650 -nodes -x509 \
+ -subj "/C=DE/ST=Berlin/L=Rus/O=wormi4ok/CN=protonmail-bridge" \
+ -keyout ./server.key -out ./server.crt
+```
