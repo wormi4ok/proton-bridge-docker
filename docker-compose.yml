@@ -9,6 +9,7 @@ services:
       - 1025:25/tcp
     volumes:
       - protonmail:/root
+      # - ./nginx.conf:/etc/nginx/nginx.conf # Mount custom nginx config
 volumes:
   protonmail:
     name: protonmail
