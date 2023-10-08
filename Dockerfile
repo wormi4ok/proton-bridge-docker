@@ -1,3 +1,11 @@
+FROM golang:1.21-bookworm AS binary
+
+WORKDIR /usr/src/app
+
+COPY fakeauth .
+
+RUN go build -v -o /usr/local/bin/fakeauth fakeauth
+
 FROM nginx:bookworm
 
 LABEL org.opencontainers.image.source="https://github.com/wormi4ok/proton-bridge-docker" \
@@ -10,6 +18,8 @@ WORKDIR /protonmail
 COPY gpgparams install.sh VERSION ./
 
 RUN bash install.sh
+
+COPY --from=binary /usr/local/bin/fakeauth /usr/local/bin/fakeauth
 
 EXPOSE 25/tcp
 EXPOSE 143/tcp

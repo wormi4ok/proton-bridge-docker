@@ -14,6 +14,9 @@ if [[ "${1:-run}" == init ]]; then
 
 else
 
+    # Start fake mail auth server
+    fakeauth &
+
     # nginx will proxy the connection and make it appear to come from 127.0.0.1
     # ProtonMail Bridge currently expects that.
     nginx
