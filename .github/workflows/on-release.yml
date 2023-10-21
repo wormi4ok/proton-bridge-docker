@@ -1,0 +1,34 @@
+name: Update upstream
+
+on:
+  schedule:
+    - cron: '33 14 * * *'  # runs once a day
+
+jobs:
+  version-bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - id: proton-bridge
+        uses: pozetroninc/github-action-get-latest-release@v0.7.0
+        with:
+          owner: ProtonMail
+          repo: proton-bridge
+          excludes: prerelease, draft
+
+      - id: checkout
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v4
+        with:
+          go-version: 'stable'
+
+      - id: update-version
+        run: go run updater.go "${{ steps.proton-bridge.outputs.release }}"
+
+      - id: commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5.0
+        with:
+          commit_message: Update proton-bridge to ${{ steps.proton-bridge.outputs.release }}
+          file_pattern: VERSION

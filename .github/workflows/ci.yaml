@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows: ["Update upstream"]
+    types:
+      - completed
 env:
   DOCKER_REPO: wormi4ok/protonmail-bridge
 
