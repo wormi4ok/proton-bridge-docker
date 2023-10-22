@@ -27,7 +27,7 @@ jobs:
       - id: update-version
         run: go run updater.go "${{ steps.proton-bridge.outputs.release }}"
 
-      - id: commit changes
+      - id: commit-changes
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
         with:
           commit_message: Update proton-bridge to ${{ steps.proton-bridge.outputs.release }}
