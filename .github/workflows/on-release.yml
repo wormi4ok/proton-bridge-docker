@@ -16,6 +16,7 @@ jobs:
           owner: ProtonMail
           repo: proton-bridge
           excludes: prerelease, draft
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - id: checkout
         uses: actions/checkout@v4
