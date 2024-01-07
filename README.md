@@ -1,6 +1,6 @@
 # Proton Mail Bridge in a Docker container
 
-This is yet another unofficial Docker image to run the Proton Mail Bridge.
+This is yet another unofficial Docker image to run [Proton Mail Bridge](https://github.com/ProtonMail/proton-bridge).
 Use it at your own risk.
 Inspired by [shenxn/protonmail-bridge-docker](https://github.com/shenxn/protonmail-bridge-docker)
 
