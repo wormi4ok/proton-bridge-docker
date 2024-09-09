@@ -9,7 +9,7 @@ Inspired by [shenxn/protonmail-bridge-docker](https://github.com/shenxn/protonma
 Initialize Proton Mail Bridge
 
 ```bash
-docker compose run --rm protonmail-bridge bash entrypoint.sh init
+docker compose run --rm protonmail-bridge init
 login # enter your credentials
 # optionally, switch to split mode if you have more that one email address
 # in split mode every email address has own local credentials

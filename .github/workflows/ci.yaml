@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'VERSION'
+      - "VERSION"
   workflow_run:
     workflows: ["Update upstream"]
     types:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.0
+        uses: actions/checkout@v4
 
       - name: Set version
         id: version

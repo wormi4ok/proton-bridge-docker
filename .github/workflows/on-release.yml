@@ -2,7 +2,7 @@ name: Update upstream
 
 on:
   schedule:
-    - cron: '33 14 * * *'  # runs once a day
+    - cron: "33 14 * * *" # runs once a day
 
 jobs:
   version-bump:
@@ -11,7 +11,7 @@ jobs:
       contents: write
     steps:
       - id: proton-bridge
-        uses: pozetroninc/github-action-get-latest-release@v0.7.0
+        uses: pozetroninc/github-action-get-latest-release@v0.8.0
         with:
           owner: ProtonMail
           repo: proton-bridge
@@ -23,7 +23,7 @@ jobs:
 
       - uses: actions/setup-go@v4
         with:
-          go-version: 'stable'
+          go-version: "stable"
 
       - id: update-version
         run: go run updater.go "${{ steps.proton-bridge.outputs.release }}"

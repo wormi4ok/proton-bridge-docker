@@ -1,4 +1,4 @@
-FROM golang:1.21-bookworm AS binary
+FROM golang:1.23-bookworm AS binary
 
 WORKDIR /usr/src/app
 
