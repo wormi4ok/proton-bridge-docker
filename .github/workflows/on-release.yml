@@ -19,9 +19,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v6
         with:
           go-version: "stable"
 
@@ -29,7 +29,7 @@ jobs:
         run: go run updater.go "${{ steps.proton-bridge.outputs.release }}"
 
       - id: commit-changes
-        uses: stefanzweifel/git-auto-commit-action@v5.0.0
+        uses: stefanzweifel/git-auto-commit-action@v7.0.0
         with:
           commit_message: Update proton-bridge to ${{ steps.proton-bridge.outputs.release }}
           file_pattern: VERSION

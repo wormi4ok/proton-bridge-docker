@@ -18,13 +18,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set version
         id: version
         run: echo "version=`cat VERSION`" >> $GITHUB_OUTPUT
 
+      - name: Check if the image already exists
+        id: check_image
+        run: |
+          if docker manifest inspect "${{ env.DOCKER_REPO }}:${{ steps.version.outputs.version }}" > /dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish Docker image to GitHub Container Registry
+        if: steps.check_image.outputs.exists == 'true'
         uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           registry: ghcr.io
