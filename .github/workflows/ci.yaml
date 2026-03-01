@@ -31,7 +31,7 @@ jobs:
           fi
 
       - name: Publish Docker image to GitHub Container Registry
-        if: steps.check_image.outputs.exists == 'true'
+        if: steps.check_image.outputs.exists == "false"
         uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           registry: ghcr.io
