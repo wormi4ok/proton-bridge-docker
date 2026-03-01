@@ -19,7 +19,7 @@ wget -q "https://proton.me/download/bridge/${DEB_FILE}"
 ar x -v "${DEB_FILE}"
 mkdir control
 tar zxvf control.tar.gz -C control
-sed -i "s/^Depends: .*$/Depends: libgl1, libc6, libsecret-1-0, libstdc++6, libgcc1/" control/control
+sed -i "s/^Depends: .*$/Depends: libgl1, libc6, libsecret-1-0, libstdc++6, libgcc1, libfido2-1/" control/control
 cd control
 tar zcvf ../control.tar.gz .
 cd ../
