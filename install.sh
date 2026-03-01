@@ -6,11 +6,11 @@ VERSION=$(<VERSION)
 DEB_FILE=protonmail-bridge_${VERSION}_amd64.deb
 
 # Install dependencies
-apt-get update
-apt-get install -y --no-install-recommends pass ca-certificates
+apt update
+apt install -y --no-install-recommends pass ca-certificates
 
 # Build time dependencies
-apt-get install -y wget binutils xz-utils
+apt install -y wget binutils xz-utils
 
 # Repack deb (remove unnecessary dependencies)
 mkdir deb
@@ -27,10 +27,10 @@ ar rcs -v "${DEB_FILE}" debian-binary control.tar.gz data.tar.gz
 cd ../
 
 # Install protonmail bridge
-apt-get install -y --no-install-recommends "./deb/${DEB_FILE}"
+apt install -y --no-install-recommends "./deb/${DEB_FILE}"
 
 # Cleanup
-apt-get purge -y wget binutils xz-utils
-apt-get autoremove -y
+apt purge -y wget binutils xz-utils
+apt autoremove -y
 rm -rf /var/lib/apt/lists/*
 rm -rf deb

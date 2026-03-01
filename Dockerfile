@@ -1,4 +1,4 @@
-FROM golang:1.23-bookworm AS binary
+FROM golang:1.26-trixie AS binary
 
 WORKDIR /usr/src/app
 
@@ -6,7 +6,7 @@ COPY fakeauth .
 
 RUN go build -v -o /usr/local/bin/fakeauth fakeauth
 
-FROM nginx:bookworm
+FROM nginx:trixie
 
 LABEL org.opencontainers.image.source="https://github.com/wormi4ok/proton-bridge-docker" \
       org.opencontainers.image.title="Proton Mail Bridge" \
