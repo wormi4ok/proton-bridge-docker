@@ -6,6 +6,10 @@ on:
       - main
     paths:
       - "VERSION"
+  workflow_run:
+    workflows: ["Update upstream"]
+    types:
+      - completed
 
 env:
   DOCKER_REPO: wormi4ok/protonmail-bridge
