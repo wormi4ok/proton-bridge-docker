@@ -24,7 +24,7 @@ Start Proton mail bridge in the background:
 docker compose up -d
 ```
 
-It is intended to in a local secure network, so default proxy config doesn't use encryption.
+It is intended to run in a local secure network, so default proxy config doesn't use encryption.
 To enable encryption, you can mount a custom `nginx.conf` file to the [protonmail-bridge](docker-compose.yml) container
 at `/etc/nginx/nginx.conf` and follow [the official guide from NGINX][] to configure TLS/SSL.
 
